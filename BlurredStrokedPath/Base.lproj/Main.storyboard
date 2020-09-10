@@ -35,18 +35,83 @@
                                     <action selector="handleAnimateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GYA-Im-PXb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Line width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umN-BR-7US">
+                                <rect key="frame" x="20" y="765" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Blur radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okx-Yz-b0W">
+                                <rect key="frame" x="20" y="717" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Dr3-ly-YyS" userLabel="Line Width Slider">
+                                <rect key="frame" x="117" y="762" width="219" height="31"/>
+                                <connections>
+                                    <action selector="handleLineWidthSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="yfW-Oo-byA"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HZi-yN-SO7" userLabel="Blur Radius Slider">
+                                <rect key="frame" x="117" y="712" width="219" height="31"/>
+                                <connections>
+                                    <action selector="handleblurRadiusSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="8QU-Ma-uh1"/>
+                                </connections>
+                            </slider>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5S-VP-wmg">
+                                <rect key="frame" x="344" y="710" width="50" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="orQ-kb-wi4"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="STQ-4h-ZSl">
+                                <rect key="frame" x="344" y="760" width="50" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="jGK-pz-ueX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8db-r6-aAt"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="umN-BR-7US" firstAttribute="top" secondItem="okx-Yz-b0W" secondAttribute="bottom" constant="20" id="3eD-9K-zd2"/>
+                            <constraint firstItem="STQ-4h-ZSl" firstAttribute="leading" secondItem="g5S-VP-wmg" secondAttribute="leading" id="5G5-5e-RwH"/>
+                            <constraint firstItem="Dr3-ly-YyS" firstAttribute="trailing" secondItem="HZi-yN-SO7" secondAttribute="trailing" id="6et-zy-4Hd"/>
+                            <constraint firstItem="STQ-4h-ZSl" firstAttribute="trailing" secondItem="g5S-VP-wmg" secondAttribute="trailing" id="BYv-nX-Ph1"/>
                             <constraint firstItem="eKh-Jk-gRD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ezb-ax-boA"/>
+                            <constraint firstItem="umN-BR-7US" firstAttribute="leading" secondItem="okx-Yz-b0W" secondAttribute="leading" id="GMV-VA-ARi"/>
+                            <constraint firstItem="Dr3-ly-YyS" firstAttribute="centerY" secondItem="umN-BR-7US" secondAttribute="centerY" id="N2r-oQ-tJu"/>
+                            <constraint firstItem="HZi-yN-SO7" firstAttribute="centerY" secondItem="okx-Yz-b0W" secondAttribute="centerY" id="Sly-DK-IVF"/>
+                            <constraint firstItem="Dr3-ly-YyS" firstAttribute="leading" secondItem="HZi-yN-SO7" secondAttribute="leading" id="Wya-UF-msg"/>
+                            <constraint firstItem="STQ-4h-ZSl" firstAttribute="centerY" secondItem="Dr3-ly-YyS" secondAttribute="centerY" id="Yll-0K-kxF"/>
+                            <constraint firstItem="g5S-VP-wmg" firstAttribute="leading" secondItem="HZi-yN-SO7" secondAttribute="trailing" constant="10" id="bME-ws-3UE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HtG-ae-PLf" secondAttribute="bottom" constant="20" id="icx-Ak-d7z"/>
+                            <constraint firstItem="umN-BR-7US" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="in5-IQ-N2Q"/>
+                            <constraint firstItem="Dr3-ly-YyS" firstAttribute="top" secondItem="HZi-yN-SO7" secondAttribute="bottom" constant="20" id="kOG-31-DEv"/>
+                            <constraint firstItem="Dr3-ly-YyS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="umN-BR-7US" secondAttribute="trailing" constant="20" id="lTv-ZU-YMJ"/>
+                            <constraint firstItem="HZi-yN-SO7" firstAttribute="leading" secondItem="okx-Yz-b0W" secondAttribute="trailing" constant="10" id="lfa-xd-Hwc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="STQ-4h-ZSl" secondAttribute="trailing" constant="20" id="pHw-tc-Wfa"/>
                             <constraint firstItem="eKh-Jk-gRD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pln-An-WLO"/>
                             <constraint firstItem="HtG-ae-PLf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s3b-XC-oNC"/>
+                            <constraint firstItem="HZi-yN-SO7" firstAttribute="centerY" secondItem="okx-Yz-b0W" secondAttribute="centerY" id="wu4-Ge-2xj"/>
+                            <constraint firstItem="g5S-VP-wmg" firstAttribute="centerY" secondItem="HZi-yN-SO7" secondAttribute="centerY" id="xdX-DB-z1e"/>
+                            <constraint firstItem="HtG-ae-PLf" firstAttribute="top" secondItem="Dr3-ly-YyS" secondAttribute="bottom" constant="20" id="yGq-Bp-HdW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="animationView" destination="eKh-Jk-gRD" id="68l-dd-oaX"/>
+                        <outlet property="blurRadiusSlider" destination="HZi-yN-SO7" id="Ha0-p2-rw1"/>
+                        <outlet property="blurRadiusTextField" destination="g5S-VP-wmg" id="4Po-G7-Sw7"/>
+                        <outlet property="lineWidthSlider" destination="Dr3-ly-YyS" id="8Cx-Kp-m80"/>
+                        <outlet property="lineWidthTextField" destination="STQ-4h-ZSl" id="CxQ-Yu-Z4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

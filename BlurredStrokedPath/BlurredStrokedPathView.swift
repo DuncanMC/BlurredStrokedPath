@@ -9,10 +9,23 @@
 import UIKit
 
 class BlurredStrokedPathView: UIView {
-    var shapeLayer = CAShapeLayer()
-    var lineWidth: CGFloat = 10
-    var blurRadius: CGFloat = 5
+    public var lineWidth: CGFloat = 10 {
+        didSet {
+            print("lineWidth changed to \(lineWidth)")
+            shapeLayer.shadowPath = createFilledPath(curveTop: bounds.height / 2)
+        }
+    }
 
+    public var blurRadius: CGFloat = 5 {
+        didSet {
+            shapeLayer.shadowRadius = blurRadius
+        }
+    }
+
+    private var sourcePath: CGPath?
+
+    private var shapeLayer = CAShapeLayer()
+    
     public func animate() {
         let animation = CABasicAnimation(keyPath: "shadowPath")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
@@ -25,7 +38,7 @@ class BlurredStrokedPathView: UIView {
     }
 
     //Create a cosine curve. If curveTop = 0, it peaks at the top of the view. If it = bounds.height/2, it peaks about halfway up
-    func createFilledPath(curveTop: CGFloat) -> CGPath {
+    func createFilledPath(curveTop: CGFloat) -> CGPath? {
         let animationBox = bounds.insetBy(dx: lineWidth/2 + blurRadius * 2, dy: lineWidth/2 + blurRadius * 2)
         let path = UIBezierPath()
         let halfWidth = animationBox.width / 2
@@ -49,10 +62,14 @@ class BlurredStrokedPathView: UIView {
         controlPoint2 = CGPoint(x: 0.6366197723675813 * halfWidth, y:  animationBox.origin.y + animationBox.height)
         path.addCurve(to: CGPoint(x: animationBox.origin.x, y:  animationBox.origin.y + animationBox.height), controlPoint1: controlPoint1, controlPoint2: controlPoint2)
 
+        sourcePath = path.cgPath
 
         //Create a filled version of the path
-        let filledPath = path.cgPath.copy(strokingWithWidth: lineWidth, lineCap: .round, lineJoin: .miter, miterLimit: 0)
-        return filledPath
+        return createFilledPath()
+    }
+
+    func createFilledPath() -> CGPath? {
+        return sourcePath?.copy(strokingWithWidth: lineWidth, lineCap: .round, lineJoin: .miter, miterLimit: 0)
     }
 
     func setup(curveTop: CGFloat) {
